@@ -1,0 +1,46 @@
+{
+    "name": "spacecatninja/imager-x-pdf-adapter",
+    "description": "File adapter for transforming PDFs in Imager X",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "imager",
+        "pdf"
+    ],
+    "support": {
+        "docs": "https://github.com/spacecatninja/imager-x-pdf-adapter/blob/master/README.md",
+        "issues": "https://github.com/spacecatninja/imager-x-pdf-adapter/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SPACECATNINJA",
+            "homepage": "https://www.spacecat.ninja"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "ext-imagick": "*",
+        "craftcms/cms": "^4.0.0",
+        "spacecatninja/imager-x": "^4.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "spacecatninja\\imagerxpdfadapter\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Imager X PDF Adapter",
+        "handle": "imager-x-pdf-adapter",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/spacecatninja/imager-x-pdf-adapter/master/CHANGELOG.md",
+        "components": {},
+        "class": "spacecatninja\\imagerxpdfadapter\\PDFAdapter"
+    }
+}
