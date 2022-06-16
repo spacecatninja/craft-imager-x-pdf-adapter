@@ -12,8 +12,8 @@
         "pdf"
     ],
     "support": {
-        "docs": "https://github.com/spacecatninja/imager-x-pdf-adapter/blob/master/README.md",
-        "issues": "https://github.com/spacecatninja/imager-x-pdf-adapter/issues"
+        "docs": "https://github.com/spacecatninja/craft-imager-x-pdf-adapter/blob/master/README.md",
+        "issues": "https://github.com/spacecatninja/craft-imager-x-pdf-adapter/issues"
     },
     "license": "MIT",
     "authors": [
@@ -39,7 +39,7 @@
         "schemaVersion": "1.0.0",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/spacecatninja/imager-x-pdf-adapter/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/spacecatninja/craft-imager-x-pdf-adapter/master/CHANGELOG.md",
         "components": {},
         "class": "spacecatninja\\imagerxpdfadapter\\PDFAdapter"
     }
