@@ -6,7 +6,35 @@ Also, an example of [how to make a custom file adapter for Imager X](https://ima
 
 ## Requirements
 
-This plugin requires Imager X 4.1.0+, Craft CMS 4.0.0+, PHP 8.0+ and Imagick with support for opening PDFs. 
+This plugin requires Imager X 4.1.0+, Craft CMS 4.0.0+, PHP 8.0+ and Imagick _with 
+support for opening PDFs_.
+
+### Support for opening PDFs, what does it mean?
+
+As a start, it means that ghostscript needs to be installed on the server, and available to ImageMagick as
+a delegate format. It usually is.
+
+Where you're more likely to encounter issues is that in some environments access to open PDFs may be restricted 
+by your [ImageMagick policy file](https://twitter.com/nystudio107/status/1363124167764238337). This is an XML file that
+sets the resource and security policy for ImageMagick, and in turn Imagick. On Ubuntu, it's located in /etc/ImageMagick-6/policy.xml 
+(if you have ImageMagick 6, replace the 6 with 7 if that's what's installed), a google search will probably help you figure out where 
+it is on your distro. 
+
+If you get an error (on your log or debug bar) saying something about PDFs and policy, you probably have this in that file:
+
+```
+<policy domain="coder" rights="none" pattern="PDF" />
+```
+
+Changing the rights to `read|write`:
+
+```
+<policy domain="coder" rights="read|write" pattern="PDF" />
+```
+
+Make sure to restart your webserver/php-fpm after making changes, or the old settings will be cached. If that didn't work
+there're more tips [in this StackOverflow-thread](https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion) 
+that you can try.
 
 ## Installation
 
@@ -21,7 +49,7 @@ To install the plugin, follow these instructions:
 
 Install and configure the adapter as described below. 
 
-You can now transform PDF files simply by padding a PDF file to Imager's `transformImage` method:
+You can now transform PDF files simply by adding a PDF file to Imager's `transformImage` method:
 
 ```
 {% set transforms = craft.imagerx.transformImage(myPdfAsset, { width: 200 }) %}
@@ -60,7 +88,7 @@ to transform, using the config setting ['safeFileFormats'](https://imager-x.spac
 
 ## Configuring
 
-You can configure the transformer by creating a file in your config folder called
+You can configure the adapter by creating a file in your config folder called
 `imager-x-pdf-adapter.php`, and override settings as needed.
 
 ### defaultDensity [int]
@@ -86,9 +114,7 @@ Default: `false`
 Sets the cacheDuration that's used if `cacheEnabled` is `true`. By default, forever. 
 Clearing the Imager runtime cache will also clear this cache.
 
-
 ---
-
 
 Price, license and support
 ---
