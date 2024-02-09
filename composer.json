@@ -2,7 +2,7 @@
     "name": "spacecatninja/imager-x-pdf-adapter",
     "description": "File adapter for transforming PDFs in Imager X",
     "type": "craft-plugin",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "keywords": [
         "craft",
         "cms",
@@ -25,8 +25,8 @@
     "require": {
         "php": "^8.0.2",
         "ext-imagick": "*",
-        "craftcms/cms": "^4.0.0",
-        "spacecatninja/imager-x": "^4.1.0"
+        "craftcms/cms": "^4.0.0|^5.0.0-beta.1",
+        "spacecatninja/imager-x": "^4.1.0|^5.0.0-beta.1"
     },
     "autoload": {
         "psr-4": {

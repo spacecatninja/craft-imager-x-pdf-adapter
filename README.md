@@ -6,7 +6,7 @@ Also, an example of [how to make a custom file adapter for Imager X](https://ima
 
 ## Requirements
 
-This plugin requires Imager X 4.1.0+, Craft CMS 4.0.0+, PHP 8.0+ and Imagick _with 
+This plugin requires Imager X 4.1+/5.0+, Craft CMS 4.0+/5.0+, PHP 8.0+ and Imagick _with 
 support for opening PDFs_.
 
 ### Support for opening PDFs, what does it mean?
