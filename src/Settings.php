@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2022 André Elvan
   */
 
-namespace spacecatninja\imagerxpdfadapter\models;
+namespace SpaceCatNinja\ImagerXPdfAdapter;
 
 use craft\base\Model;
 

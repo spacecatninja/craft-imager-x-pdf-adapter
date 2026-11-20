@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-          "spacecatninja\\imagerxpdfadapter\\": "src/"
+            "SpaceCatNinja\\ImagerXPdfAdapter\\": "src/"
         }
     },
     "extra": {
@@ -41,6 +41,6 @@
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/spacecatninja/craft-imager-x-pdf-adapter/master/CHANGELOG.md",
         "components": {},
-        "class": "spacecatninja\\imagerxpdfadapter\\PDFAdapter"
+        "class": "SpaceCatNinja\\ImagerXPdfAdapter\\PDFAdapter"
     }
 }

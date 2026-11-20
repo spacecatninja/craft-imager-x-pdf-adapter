@@ -5,12 +5,12 @@
  * @link      https://www.spacecat.ninja/
  * @copyright Copyright (c) 2022 André Elvan
  */
-namespace spacecatninja\imagerxpdfadapter\services;
+namespace SpaceCatNinja\ImagerXPdfAdapter\Services;
 
 use craft\base\Component;
 use craft\elements\Asset;
 
-use spacecatninja\imagerxpdfadapter\adapters\PDF;
+use SpaceCatNinja\ImagerXPdfAdapter\Adapters\PDF;
 
 
 /**

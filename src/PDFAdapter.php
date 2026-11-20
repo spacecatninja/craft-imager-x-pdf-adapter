@@ -6,16 +6,16 @@
  * @copyright Copyright (c) 2022 André Elvan
  */
 
-namespace spacecatninja\imagerxpdfadapter;
+namespace SpaceCatNinja\ImagerXPdfAdapter;
 
 use craft\base\Model;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
 
-use spacecatninja\imagerxpdfadapter\adapters\PDF;
-use spacecatninja\imagerxpdfadapter\models\Settings;
-use spacecatninja\imagerxpdfadapter\services\PdfLoaderService;
-use spacecatninja\imagerxpdfadapter\variables\PDFAdapterVariable;
+use SpaceCatNinja\ImagerXPdfAdapter\Adapters\PDF;
+use SpaceCatNinja\ImagerXPdfAdapter\Settings;
+use SpaceCatNinja\ImagerXPdfAdapter\Services\PdfLoaderService;
+use SpaceCatNinja\ImagerXPdfAdapter\Twig\PDFAdapterVariable;
 
 use yii\base\Event;
 

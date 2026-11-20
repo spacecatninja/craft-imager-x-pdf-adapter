@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2022 André Elvan
  */
 
-namespace spacecatninja\imagerxpdfadapter\adapters;
+namespace SpaceCatNinja\ImagerXPdfAdapter\Adapters;
 
 use Craft;
 use craft\elements\Asset;
@@ -16,8 +16,8 @@ use ImagickException;
 use spacecatninja\imagerx\adapters\ImagerAdapterInterface;
 use spacecatninja\imagerx\exceptions\ImagerException;
 use spacecatninja\imagerx\models\LocalSourceImageModel;
-use spacecatninja\imagerxpdfadapter\models\Settings;
-use spacecatninja\imagerxpdfadapter\PDFAdapter;
+use SpaceCatNinja\ImagerXPdfAdapter\Settings;
+use SpaceCatNinja\ImagerXPdfAdapter\PDFAdapter;
 use yii\base\Exception;
 
 class PDF implements ImagerAdapterInterface

@@ -6,12 +6,12 @@
  * @copyright Copyright (c) 2022 André Elvan
  */
 
-namespace spacecatninja\imagerxpdfadapter\variables;
+namespace SpaceCatNinja\ImagerXPdfAdapter\Twig;
 
 use Craft;
 use craft\elements\Asset;
-use spacecatninja\imagerxpdfadapter\adapters\PDF;
-use spacecatninja\imagerxpdfadapter\PDFAdapter;
+use SpaceCatNinja\ImagerXPdfAdapter\Adapters\PDF;
+use SpaceCatNinja\ImagerXPdfAdapter\PDFAdapter;
 
 /**
  * PDFAdapterVariable Variable
