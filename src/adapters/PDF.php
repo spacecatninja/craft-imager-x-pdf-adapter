@@ -80,6 +80,7 @@ class PDF implements ImagerAdapterInterface
     public function load(Asset|string $asset): void
     {
         $this->source = $asset;
+        $this->isReady = false;
 
         try {
             $this->sourceModel = new LocalSourceImageModel($asset);
@@ -104,17 +105,24 @@ class PDF implements ImagerAdapterInterface
             return 0;
         }
 
-        return Craft::$app->getCache()->getOrSet(self::PAGECOUNT_CACHE_KEY.'_'.base64_encode($this->sourceModel->getFilePath()), function() {
-            $im = new \Imagick();
-            $im->pingImage($this->sourceModel->getFilePath());
+        try {
+            return Craft::$app->getCache()->getOrSet(self::PAGECOUNT_CACHE_KEY.'_'.base64_encode($this->sourceModel->getFilePath()), function() {
+                $im = new \Imagick();
+                $im->pingImage($this->sourceModel->getFilePath());
 
-            return $im->getNumberImages();
-        });
+                return $im->getNumberImages();
+            });
+        } catch (ImagickException $imagickException) {
+            Craft::error('An error occured when trying to get the number of pages in PDF: '.$imagickException->getMessage(), __METHOD__);
+
+            return 0;
+        }
     }
 
     public function setPage(int $page): void
     {
         $this->page = $page > 0 ? $page : 1;
+        $this->isReady = false;
     }
 
     /*
@@ -123,6 +131,9 @@ class PDF implements ImagerAdapterInterface
 
     protected function getPDFBitmap(): void
     {
+        // Only once for the current source and page, since Imager calls both getTransformPath() and getPath()
+        $this->isReady = true;
+
         if ($this->sourceModel === null) {
             return;
         }
