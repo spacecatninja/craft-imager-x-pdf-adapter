@@ -6,8 +6,10 @@ Also, an example of [how to make a custom file adapter for Imager X](https://ima
 
 ## Requirements
 
-This plugin requires Imager X 4.1+/5.0+, Craft CMS 4.0+/5.0+, PHP 8.0+ and Imagick _with 
-support for opening PDFs_.
+This plugin requires Craft CMS 6.0.0 or later, [Imager X 7.0.0](https://github.com/spacecatninja/craft-imager-x/) or later,
+PHP 8.5 or later, and Imagick _with support for opening PDFs_.
+
+Version 1.x of this plugin supports Craft CMS 4 and 5 and Imager X 4, 5 and 6. See [UPGRADE.md](UPGRADE.md) when moving to Craft 6.
 
 ### Support for opening PDFs, what does it mean?
 
@@ -41,7 +43,7 @@ that you can try.
 To install the plugin, follow these instructions:
 
 1. Install with composer via `composer require spacecatninja/imager-x-pdf-adapter` from your project directory.
-2. Install the plugin in the Craft Control Panel under Settings → Plugins, or from the command line via `./craft install/plugin imager-x-pdf-adapter`.
+2. Install the plugin in the Craft Control Panel under Settings > Plugins, or from the command line via `php artisan craft:plugin:install imager-x-pdf-adapter`.
 
 ---
 
@@ -88,8 +90,18 @@ to transform, using the config setting ['safeFileFormats'](https://imager-x.spac
 
 ## Configuring
 
-You can configure the adapter by creating a file in your config folder called
-`imager-x-pdf-adapter.php`, and override settings as needed.
+You can configure the adapter by creating a file called `imager-x-pdf-adapter.php` in your `config/craft/` folder,
+and override settings as needed. It's a plain Laravel config file, so use `env()` for environment-specific values.
+Example:
+
+```php
+<?php
+
+return [
+    'defaultDensity' => 200,
+    'defaultFormat' => 'jpg',
+];
+```
 
 ### defaultDensity [int]
 Default: `144`  
