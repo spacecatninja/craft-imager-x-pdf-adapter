@@ -1,6 +1,6 @@
 # Imager X PDF Adapter Changelog
 
-## 1.1.2 - Unreleased
+## 1.1.2 - 2026-11-20
 
 ### Fixed
 - Fixed the PDF page being rasterized again on every call to `getPath()` and `getTransformPath()`. Imager X calls both for each transform, so with `cacheEnabled` off, each page was rasterized twice.
