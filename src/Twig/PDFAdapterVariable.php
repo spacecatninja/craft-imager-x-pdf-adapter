@@ -8,23 +8,21 @@
 
 namespace SpaceCatNinja\ImagerXPdfAdapter\Twig;
 
-use Craft;
-use craft\elements\Asset;
+use CraftCms\Cms\Asset\Elements\Asset;
 use SpaceCatNinja\ImagerXPdfAdapter\Adapters\PDF;
-use SpaceCatNinja\ImagerXPdfAdapter\PDFAdapter;
+use SpaceCatNinja\ImagerXPdfAdapter\Services\PdfLoaderService;
 
 /**
- * PDFAdapterVariable Variable
+ * The `craft.pdfadapter` variable.
  *
  * @author    SpaceCatNinja
  * @package   ImagerXPDFAdapter
  * @since     1.0.0
  */
-
 class PDFAdapterVariable
 {
     public function load(Asset|string $asset, array $opts = []): ?PDF
     {
-        return PDFAdapter::getInstance()->loader->loadPdf($asset, $opts);
+        return app(PdfLoaderService::class)->loadPdf($asset, $opts);
     }
 }

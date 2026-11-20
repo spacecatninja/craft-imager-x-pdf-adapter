@@ -5,22 +5,20 @@
  * @link      https://www.spacecat.ninja/
  * @copyright Copyright (c) 2022 André Elvan
  */
+
 namespace SpaceCatNinja\ImagerXPdfAdapter\Services;
 
-use craft\base\Component;
-use craft\elements\Asset;
-
+use CraftCms\Cms\Asset\Elements\Asset;
 use SpaceCatNinja\ImagerXPdfAdapter\Adapters\PDF;
 
-
 /**
- * PdfService Service
+ * PdfLoaderService Service
  *
  * @author    SpaceCatNinja
  * @package   ImagerXPDFAdapter
  * @since     1.0.0
  */
-class PdfLoaderService extends Component
+class PdfLoaderService
 {
     public function loadPdf(Asset|string $asset, array $opts = []): ?PDF
     {

@@ -23,10 +23,10 @@
         }
     ],
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.5",
         "ext-imagick": "*",
-        "craftcms/cms": "^4.0.0|^5.0.0-beta.1",
-        "spacecatninja/imager-x": "^4.1.0|^5.0.0-beta.1|^6.0.0-beta"
+        "craftcms/cms": "^6.0.0-alpha",
+        "spacecatninja/imager-x": "^7.0.0-beta.2"
     },
     "autoload": {
         "psr-4": {
@@ -38,9 +38,7 @@
         "handle": "imager-x-pdf-adapter",
         "schemaVersion": "1.0.0",
         "hasCpSettings": false,
-        "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/spacecatninja/craft-imager-x-pdf-adapter/master/CHANGELOG.md",
-        "components": {},
         "class": "SpaceCatNinja\\ImagerXPdfAdapter\\PDFAdapter"
     }
 }

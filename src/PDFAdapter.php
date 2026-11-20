@@ -8,61 +8,38 @@
 
 namespace SpaceCatNinja\ImagerXPdfAdapter;
 
-use craft\base\Model;
-use craft\base\Plugin;
-use craft\web\twig\variables\CraftVariable;
-
+use CraftCms\Cms\Plugin\Plugin;
+use CraftCms\Cms\Plugin\PluginSettings;
+use CraftCms\Cms\Twig\Variables\CraftVariable;
+use SpaceCatNinja\ImagerX\Adapters\Adapters;
 use SpaceCatNinja\ImagerXPdfAdapter\Adapters\PDF;
-use SpaceCatNinja\ImagerXPdfAdapter\Settings;
-use SpaceCatNinja\ImagerXPdfAdapter\Services\PdfLoaderService;
 use SpaceCatNinja\ImagerXPdfAdapter\Twig\PDFAdapterVariable;
-
-use yii\base\Event;
 
 /**
  * @author    SpaceCatNinja
  * @package   ImagerXPDFAdapter
  * @since     1.0.0
- *
- * @property  PdfLoaderService $loader
- *
  */
 class PDFAdapter extends Plugin
 {
-    public function init(): void
+    public function register(): void
     {
-        parent::init();
+        parent::register();
 
-        // Register services
-        $this->setComponents([
-            'loader' => PdfLoaderService::class,
-        ]);
-
-        // Register our variables
-        Event::on(CraftVariable::class, CraftVariable::EVENT_INIT,
-            static function(Event $event) {
-                /** @var CraftVariable $variable */
-                $variable = $event->sender;
-                $variable->set('pdfadapter', PDFAdapterVariable::class);
-            }
-        );
-        
-        // Register adapter in Imager X
-        Event::on(\spacecatninja\imagerx\ImagerX::class,
-            \spacecatninja\imagerx\ImagerX::EVENT_REGISTER_ADAPTERS,
-            static function (\spacecatninja\imagerx\events\RegisterAdaptersEvent $event) {
-                $event->adapters['pdf'] = PDF::class;
-            }
-        );
-
+        $this->app->singleton(Settings::class, fn() => $this->getSettings());
     }
 
-    /**
-     * @inheritdoc
-     */
-    protected function createSettingsModel(): ?Settings
+    public function boot(Adapters $adapters): void
+    {
+        // Register adapter in Imager X
+        $adapters->register('pdf', PDF::class);
+
+        // Register our variable, craft.pdfadapter
+        CraftVariable::macro('pdfadapter', static fn() => app(PDFAdapterVariable::class));
+    }
+
+    protected static function createSettings(): ?PluginSettings
     {
         return new Settings();
     }
-
 }
